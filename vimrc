@@ -24,6 +24,7 @@ Plugin 'alvan/vim-closetag'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'gko/vim-coloresque'
 Plugin 'rstacruz/vim-hyperstyle'
+Plugin 'pangloss/vim-javascript'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -42,13 +43,20 @@ highlight PmenuSel ctermfg=4 ctermbg=15
 
 " Line numbers
 
+set relativenumber
 set number
 
 " Tabs
 
-set tabstop=4
+set tabstop=2
 set softtabstop=0 noexpandtab
-set shiftwidth=4
+set shiftwidth=2
+
+set list lcs=tab:\|\ 
+hi SpecialKey ctermfg=238
+
+set breakindent
+set autoindent
 
 " Ctrl S
 

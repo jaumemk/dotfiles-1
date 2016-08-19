@@ -51,7 +51,7 @@ super + ctrl + {comma,period}
 
 
 super + {_,shift + }Tab
-	bspc desktop -f {next,prev}.occupied  && ~/.config/bspwm/titlebars.sh
+	bspc desktop -f {next,prev}.occupied
 
 super + ctrl + {Left,Down,Up,Right}
 	bspc window -p {left,down,up,right}
@@ -109,7 +109,7 @@ Print
 	scrot -e 'mv $f ~/screenshots' && notify-send "Screenshot erstellt"
 
 super + space
-	~/.config/bspwm/applauncher.sh
+	xfce4-popup-whiskermenu
 
 super + d
 	~/.config/bspwm/changedir.sh

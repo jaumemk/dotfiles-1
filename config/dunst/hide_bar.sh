@@ -7,6 +7,5 @@ xdotool windowunmap $traywid
 while [[ -n "$(xdotool search --onlyvisible --class dunst)" ]]; do
   sleep 0.2
 done
-sleep 0.2
 xdotool windowmap $wid
 xdotool windowmap $traywid

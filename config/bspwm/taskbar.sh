@@ -1,13 +1,13 @@
 #!/bin/bash
 itemLength=30
-outerPadding="                        "
+outerPadding="   "
 
 panel_height=25
 
-normalFg="CCFFFFFF"
-activeBg="#662b3032"
+normalFg="FFFFFFFF"
+activeBg="#992b3032"
 activeFg="#FFFFFF"
-inactiveBG="#00000000"
+inactiveBG="#662b3032"
 inactiveFG="#99FFFFFF"
 
 declare -A icons
@@ -51,9 +51,11 @@ while true; do
     # monitor handling
     if [[ $i =~ ^[HVD] ]]; then
       datetime=$(date '+%H:%M')
-      line="${line}%{S$monitor}%{r}%{T2}$datetime$outerPadding%{T1}%{l}$outerPadding"
+      line="${line}%{S$monitor}"
       if [[ $i =~ ^H ]]; then
-        line="${line}%{A:~/dotfiles/config/bspwm/applauncher.sh:}        %{A} %{F#8CFFFFFF}$directory    \u203A %{F#$normalFg}  "
+        line="${line}%{r}%{B#00000000}%{T2}             $datetime$outerPadding  %{T1}%{B$inactiveBG}%{l}%{B#00000000}$outerPadding%{A:xfce4-popup-whiskermenu:}           %{A}%{B$inactiveBG}%{F#CCFFFFFF}%{A:~/.config/bspwm/changedir.sh:} $directory    \u203A %{A}%{F#$normalFg}  "
+	else
+		line="$line%{r}%{T2}$datetime$outerPadding%{T1}%{l}$outerPadding"
       fi
       ((monitor--))
       if [[ $i =~ $(printf "\*\s*$") ]]; then
@@ -120,4 +122,4 @@ while true; do
   fi
   echo -e "$line"
   sleep 0.3
-done | lemonbar -n "Taskbar" -b -f "Avenir Next:size=9" -f "Avenir Next DemiBold:style=bold:size=9" -f "FontAwesome:size=11" -g x"$panel_height" -B "$inactiveBG" -F "#$normalFg" -U "$activeBg" -a "30" -u 2 | zsh
+done | lemonbar -n "Taskbar" -b -f "Avenir Next:size=9" -f "Avenir Next DemiBold:size=9" -f "FontAwesome:size=11" -g x"$panel_height" -B "$inactiveBG" -F "#$normalFg" -U "$activeBg" -a "30" -u 2 | zsh

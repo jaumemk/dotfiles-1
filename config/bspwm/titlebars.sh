@@ -73,7 +73,7 @@ done
 for (( i = 0; i < ${#ids[@]}; i++ )); do
   echo -e "%{c}%{I:/tmp/bg_${bgws[i]}.png:}\u200d%{l}%{I:/home/thilo/.config/bspwm/corner.png:}%{r}%{I:/home/thilo/.config/bspwm/corner-r.png:}"  | bar -d -p -B "/home/thilo/.config/bspwm/trans.png" -F "#4e585d" -f "Terminus:size=1" -g ${geos[i]} &
   sleep 0.05
-  ~/.config/bspwm/update-title.sh ${ids[i]}| lemonbar -d -g ${geos[i]} -f "Avenir Next:size=9" -f "Avenir Next DemiBold:size=9" -p | bash &
+  ~/.config/bspwm/update-title.sh ${ids[i]}| lemonbar -d -g ${geos[i]} -f "Avenir Next Medium:size=9" -f "Avenir Next DemiBold:size=9" -p | bash &
 done
 sleep 0.1
 for (( i = 0; i < ${#ids[@]}; i++ )); do

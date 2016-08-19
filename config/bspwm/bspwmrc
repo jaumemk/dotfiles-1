@@ -48,18 +48,18 @@ xset s off -dpms &
 xsetroot -cursor_name left_ptr &
 xinput set-prop 9 135 1.600000, 0.000000, 0.000000, 0.000000, 1.600000, 0.000000, 0.000000, 0.000000, 1.000000 &
 compton -cCGf --backend glx --paint-on-overlay --vsync opengl-swc &
-nemo -n &
 bspc desktop -f 1 &
 bspc control --subscribe| while read; do bash ~/dotfiles/config/bspwm/titlebars.sh ; done &
 ~/dotfiles/config/bspwm/adjust_gaps.sh &
 ~/dotfiles/config/bspwm/taskbar.sh &
 nm-applet & sleep 0.2 && pa-applet & sleep 0.2 && pactray &
 redshift &
-caffeine &
 unclutter &
+nemo -n &
 dropbox start &
 discord &
 linconnect-server &
 echo "/home/thilo" > /tmp/wmdirectory &
-sleep 3 && stalonetray -t --grow-gravity E --geometry 1x1+1775-0 --icon-gravity E -s 26 -i 16 --scrollbars horizontal --max-geometry 3x1
-# xfce4-panel -d &
+sleep 3 && stalonetray -t --grow-gravity E --geometry 1x1+1832-0 --icon-gravity E -s 26 -i 16 --scrollbars horizontal --max-geometry 3x1 &
+xfce4-panel -d & sleep 5 && xdotool windowunmap $(xdotool search xfce4-panel|tail -1) &
+sleep 5 && caffeine -a &
