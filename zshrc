@@ -12,17 +12,24 @@ eval "$(fasd --init auto)"
 #source "$fasd_cache"
 #unset fasd_cache
 
+cd $(cat /tmp/wmdirectory)
+
 stty stop undef
 
-NOTIFY_COMMAND_COMPLETE_TIMEOUT=30
+source /usr/share/zsh/plugins/pantheon-terminal-notify-zsh-plugin/pantheon-terminal-notify.plugin.zsh
 
-source /usr/share/zsh/plugins/zsh-notify/notify.plugin.zsh
+function pantheon_terminal_notify_formatted {
+	# $1=exit_status, $2=command, $3=elapsed_time
+	[ $1 -eq 0  ] && title="Befehl ausgeführt." || title="Befehl fehlgeschlagen."
+	pantheon_terminal_notify "$title" "$2";
+
+}
 
 export EDITOR=vim
 
 alias t='todo.sh'
 
-alias pi='ssh pi@raspberrypi'
+alias pi='ssh pi@192.168.0.14'
 
 alias ..='cd ..'
 

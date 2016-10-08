@@ -1,14 +1,14 @@
 #!/bin/bash
-itemLength=30
+itemLength=33
 outerPadding="   "
 
-panel_height=25
+panel_height=32
 
 normalFg="FFFFFFFF"
-activeBg="#992b3032"
+activeBg="#331d1f21"
 activeFg="#FFFFFF"
-inactiveBG="#662b3032"
-inactiveFG="#99FFFFFF"
+inactiveBG="#00b3032"
+inactiveFG="#CCFFFFFF"
 
 declare -A icons
 icons=( ["Firefox"]="f269" ["Atom"]="f121" ["Gnome-terminal"]="f120" ["Discord"]="f0e6" ["Spotify"]="f1bc" ["Skype"]="f17e" ["Nemo"]="f07c" ["Gpicview"]="f03e" ["Steam"]="f1b6")
@@ -33,7 +33,7 @@ while true; do
   first=true
   empty=true
 
-  monitor=1
+  monitor=0
 
   line=""
 
@@ -52,12 +52,12 @@ while true; do
     if [[ $i =~ ^[HVD] ]]; then
       datetime=$(date '+%H:%M')
       line="${line}%{S$monitor}"
-      if [[ $i =~ ^H ]]; then
-        line="${line}%{r}%{B#00000000}%{T2}             $datetime$outerPadding  %{T1}%{B$inactiveBG}%{l}%{B#00000000}$outerPadding%{A:xfce4-popup-whiskermenu:}           %{A}%{B$inactiveBG}%{F#CCFFFFFF}%{A:~/.config/bspwm/changedir.sh:} $directory    \u203A %{A}%{F#$normalFg}  "
+      if [[ $i =~ ^D ]]; then
+        line="${line}%{r}%{B#00000000}%{T2}             $datetime$outerPadding  %{T1}%{B$inactiveBG}%{l}%{B#00000000}%{A:xfce4-popup-whiskermenu:}$outerPadding           %{A}%{B$inactiveBG}%{F#C6FFFFFF}%{A:~/.config/bspwm/changedir.sh:} $directory    \u203A %{A}%{F#$normalFg}  "
 	else
 		line="$line%{r}%{T2}$datetime$outerPadding%{T1}%{l}$outerPadding"
       fi
-      ((monitor--))
+      ((monitor++))
       if [[ $i =~ $(printf "\*\s*$") ]]; then
         monitoractive=true
       fi
@@ -122,4 +122,4 @@ while true; do
   fi
   echo -e "$line"
   sleep 0.3
-done | lemonbar -n "Taskbar" -b -f "Avenir Next:size=9" -f "Avenir Next DemiBold:size=9" -f "FontAwesome:size=11" -g x"$panel_height" -B "$inactiveBG" -F "#$normalFg" -U "$activeBg" -a "30" -u 2 | zsh
+done | lemonbar -n "Taskbar" -b -f "Roboto:size=10" -f "Roboto Medium:size=10" -f "FontAwesome:size=11" -g x"$panel_height" -B "$inactiveBG" -F "#$normalFg" -U "$activeBg" -a "30" -u 2 | zsh

@@ -13,33 +13,52 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter.git'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'ervandew/supertab'
 "Plugin 'valloric/youcompleteme'
+Plugin 'rdnetto/YCM-Generator'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'alvan/vim-closetag'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'gko/vim-coloresque'
-Plugin 'rstacruz/vim-hyperstyle'
 Plugin 'pangloss/vim-javascript'
+Plugin 'justinmk/vim-syntax-extra'
+Plugin 'ap/vim-buftabline'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+set shortmess+=A
+
 " Colors
 
 syntax on
 
-set background=dark
-let g:hybrid_custom_term_colors = 1
-colorscheme hybrid
+" set background=dark
+" let g:hybrid_custom_term_colors = 1
+colorscheme colorsbox-stnight
 
 highlight Pmenu ctermfg=15 ctermbg=0
 highlight PmenuSel ctermfg=4 ctermbg=15 
+hi Normal ctermbg=none ctermfg=253
+highlight SignColumn ctermbg=none
+set fillchars+=vert:\ 
+
+highlight GitGutterAdd ctermbg=none ctermfg=142
+highlight GitGutterChange ctermbg=none ctermfg=108
+highlight GitGutterDelete ctermbg=none ctermfg=167
+highlight GitGutterChangeDelete ctermbg=none ctermfg=108
+
+let g:buftabline_show = 1
+
+map <C-t> :NERDTreeTabsToggle<CR>
+map <C-w> :bd<CR>
 
 " Line numbers
 
@@ -48,15 +67,28 @@ set number
 
 " Tabs
 
-set tabstop=2
+set tabstop=4
 set softtabstop=0 noexpandtab
-set shiftwidth=2
+set shiftwidth=4
 
 set list lcs=tab:\|\ 
 hi SpecialKey ctermfg=238
 
 set breakindent
-set autoindent
+
+" Stuff from article
+set encoding=utf-8
+set showcmd
+set hidden
+set wildmenu
+set wildmode=list:longest
+set visualbell
+set cursorline
+set undofile
+nnoremap / /\v
+vnoremap / /\v
+set ignorecase
+set smartcase
 
 " Ctrl S
 
@@ -97,6 +129,11 @@ set ttymouse=xterm
 let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
 
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+
 let g:SuperTabDefaultCompletionType    = '<C-n>'
 let g:SuperTabCrMapping                = 0
 
@@ -106,3 +143,6 @@ let g:UltiSnipsJumpForwardTrigger      = '<CR>'
 let g:UltiSnipsJumpBackwardTrigger     = '<s-CR>'
 
 nnoremap <leader>ue :UltiSnipsEdit<cr>
+
+nnoremap <leader>p :CtrlPCommandPalette<cr>
+nnoremap <leader><tab> :bn<cr>
